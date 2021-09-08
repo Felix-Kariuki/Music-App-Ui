@@ -1,12 +1,16 @@
 package com.flexcode.musicui.ui
 
+import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
@@ -23,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.flexcode.musicui.Latest
 import com.flexcode.musicui.R
 import com.flexcode.musicui.ui.theme.*
 
@@ -175,4 +180,41 @@ fun CurrentSong(
         }
     }
 
+}
+
+@ExperimentalFoundationApi
+@Composable
+fun FeatureSection(latestMusic: List<Latest>){
+    Column( modifier = Modifier.fillMaxWidth()){
+        Text(
+            text = "Latest",
+            style = MaterialTheme.typography.h1,
+            modifier = Modifier.padding(15.dp)
+        )
+        LazyVerticalGrid(
+            cells = GridCells.Fixed(2),
+            contentPadding = PaddingValues(start = 7.5.dp, end = 7.5.dp, bottom = 100.dp), //push the content to middle
+            modifier = Modifier.fillMaxHeight()
+        ){
+            items(latestMusic.size) {
+
+            }
+        }
+
+    }
+}
+
+@Composable
+fun LatestItem(
+    latest: Latest
+){
+    BoxWithConstraints(
+        modifier = Modifier
+            .padding(7.5.dp)
+            .aspectRatio(1f) // ensure a cell is square
+            .clip(RoundedCornerShape(10.dp))
+            .background(latest.darkColor)
+    ) {
+
+    }
 }
