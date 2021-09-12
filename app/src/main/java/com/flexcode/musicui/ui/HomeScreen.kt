@@ -127,6 +127,12 @@ fun GreetingSection(
                 )//style to text
             )
         }
+        Icon(
+            painter = painterResource(id = R.drawable.ic_search),
+            contentDescription = "Search",
+            tint = Color.White,
+            modifier = Modifier.size(24.dp)
+        )
     }
 
 }
@@ -156,12 +162,7 @@ fun ChipSection(
             ) {
                 Text(text = chips[it], color = TextWhite)
             }
-            Icon(
-                painter = painterResource(id = R.drawable.ic_search),
-                contentDescription = "Search",
-                tint = Color.White,
-                modifier = Modifier.size(24.dp)
-            )
+
         }
     }
 
